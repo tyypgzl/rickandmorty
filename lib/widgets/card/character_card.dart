@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rickandmorty/core/extension/context_extension.dart';
+import 'package:rickandmorty/core/extension/string_extension.dart';
 import 'package:rickandmorty/feature/comics/models/character/character_model.dart';
 
 class CharacterCardWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class CharacterCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.width,
-      height: context.lowHeight,
+      height: context.imageHeight,
       margin: context.paddingLow,
       padding: context.paddingMedium,
       decoration: BoxDecoration(
@@ -23,9 +24,7 @@ class CharacterCardWidget extends StatelessWidget {
       child: Row(
         children: [
           buildCharacterImage(context),
-          Expanded(
-            child: buildCharacterInfo(context),
-          ),
+          Expanded(child: buildCharacterInfo(context)),
         ],
       ),
     );
@@ -36,13 +35,15 @@ class CharacterCardWidget extends StatelessWidget {
       borderRadius: context.borderRadiusAllHigh,
       child: CachedNetworkImage(
         imageUrl: character?.image ?? '',
+        height: context.imageHeight,
+        width: context.imageWidth,
       ),
     );
   }
 
   Column buildCharacterInfo(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         buildCharacterName(context),
         buildCharacterGender(context),
@@ -53,9 +54,9 @@ class CharacterCardWidget extends StatelessWidget {
 
   Padding buildCharacterName(BuildContext context) {
     return Padding(
-      padding: context.paddingMedium,
+      padding: context.paddingLow,
       child: Text(
-        character?.name ?? '',
+        character!.name.toString().splitAndFetchTwoWord(),
         style: Theme.of(context).textTheme.headline6,
       ),
     );
@@ -64,14 +65,20 @@ class CharacterCardWidget extends StatelessWidget {
   Padding buildCharacterGender(BuildContext context) {
     return Padding(
       padding: context.paddingMedium,
-      child: Text('Gender: ' + character!.gender.toString()),
+      child: Text(
+        'Gender: ' + character!.gender.toString(),
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
     );
   }
 
   Padding buidlCharacterStatus(BuildContext context) {
     return Padding(
       padding: context.paddingMedium,
-      child: Text('Status: ' + character!.status.toString()),
+      child: Text(
+        'Status: ' + character!.status.toString(),
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
     );
   }
 }

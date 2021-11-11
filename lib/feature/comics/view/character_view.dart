@@ -7,6 +7,8 @@ import 'package:rickandmorty/feature/comics/models/character/character_model.dar
 import 'package:rickandmorty/feature/comics/services/character_service.dart';
 import 'package:rickandmorty/feature/comics/viewmodel/character_view_model.dart';
 import 'package:rickandmorty/widgets/card/character_card.dart';
+import 'package:rickandmorty/core/extension/context_extension.dart';
+import 'package:rickandmorty/widgets/shimmer/shimmer_effect.dart';
 
 final CharacterViewModel _characterViewModel = CharacterViewModel(
   CharacterService(
@@ -25,13 +27,13 @@ class CharacterView extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
       ),
-      body: Observer(builder: (_) {
-        return _characterViewModel.isLoading ? buildCharacterListView() : _buildLoadingWidget();
-      }),
+      body: Observer(
+        builder: (_) {
+          return _characterViewModel.isLoading ? buildCharacterListView() : buildLoadingListView();
+        },
+      ),
     );
   }
-
-  Center _buildLoadingWidget() => const Center(child: CircularProgressIndicator());
 
   ListView buildCharacterListView() {
     return ListView.builder(
@@ -41,4 +43,49 @@ class CharacterView extends StatelessWidget {
       },
     );
   }
+
+  ListView buildLoadingListView() {
+    return ListView.builder(
+      itemCount: _characterViewModel.allCharacters.results?.length,
+      itemBuilder: (context, index) {
+        return Container(
+          height: context.imageHeight,
+          margin: context.paddingLow,
+          padding: context.paddingMedium,
+          child: Expanded(
+            child: Row(
+              children: [
+                ShimmerWidget.circular(
+                  height: context.shimmerHeight,
+                  width: context.shimmerWidth,
+                  shapeBorder: RoundedRectangleBorder(borderRadius: context.borderRadiusAllHigh),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ShimmerWidget.rectangular(height: 24, width: context.width * .35),
+                      ShimmerWidget.rectangular(height: 14, width: context.width * .25),
+                      ShimmerWidget.rectangular(height: 14, width: context.width * .25),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
+
+
+/*
+Observer(
+        builder: (_) {
+          return _characterViewModel.isLoading ? buildCharacterListView() : _buildLoadingWidget();
+        },
+      ),
+
+
+*/ 

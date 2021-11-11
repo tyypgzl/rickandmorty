@@ -8,7 +8,10 @@ extension ContextExtension on BuildContext {
 extension MediaQueryExtension on BuildContext {
   double get width => mediaQuery.size.width;
   double get height => mediaQuery.size.height;
-  double get lowHeight => mediaQuery.size.height * .28;
+  double get imageHeight => mediaQuery.size.height * .18;
+  double get imageWidth => mediaQuery.size.width * .35;
+  double get shimmerWidth => mediaQuery.size.width * .30;
+  double get shimmerHeight => mediaQuery.size.width * .30;
 }
 
 extension PaddingExtensionAll on BuildContext {
@@ -19,6 +22,6 @@ extension PaddingExtensionAll on BuildContext {
 
 extension BorderRadiusExtension on BuildContext {
   BorderRadius get borderRadiusAllLow => const BorderRadius.all(Radius.circular(4));
-  BorderRadius get borderRadiusAllMedium => const BorderRadius.all(Radius.circular(8));
-  BorderRadius get borderRadiusAllHigh => const BorderRadius.all(Radius.circular(16));
+  BorderRadius get borderRadiusAllMedium => const BorderRadius.all(Radius.circular(12));
+  BorderRadius get borderRadiusAllHigh => const BorderRadius.all(Radius.circular(24));
 }
