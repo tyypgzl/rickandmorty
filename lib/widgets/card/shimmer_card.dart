@@ -13,13 +13,11 @@ class ShimmerCard extends StatelessWidget {
       height: context.imageHeight,
       margin: context.paddingLow,
       padding: context.paddingMedium,
-      child: Expanded(
-        child: Row(
-          children: [
-            shimmerImageArea(context),
-            Expanded(child: shimmerTextsArea(context)),
-          ],
-        ),
+      child: Row(
+        children: [
+          shimmerImageArea(context),
+          Expanded(child: shimmerTextsArea(context)),
+        ],
       ),
     );
   }

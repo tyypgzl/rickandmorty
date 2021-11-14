@@ -1,5 +1,5 @@
-import 'package:rickandmorty/feature/comics/models/info/info_model.dart';
-import 'package:rickandmorty/feature/comics/models/location/locaiton_model.dart';
+import 'package:rickandmorty/feature/character/models/info/info_model.dart';
+import 'package:rickandmorty/feature/location/model/locaiton_model.dart';
 
 class AllLocation {
   Info? info;

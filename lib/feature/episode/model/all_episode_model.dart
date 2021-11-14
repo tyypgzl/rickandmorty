@@ -1,5 +1,6 @@
-import 'package:rickandmorty/feature/comics/models/episode/episode_model.dart';
-import 'package:rickandmorty/feature/comics/models/info/info_model.dart';
+import 'package:rickandmorty/feature/character/models/info/info_model.dart';
+
+import 'episode_model.dart';
 
 class AllEpisode {
   Info? info;

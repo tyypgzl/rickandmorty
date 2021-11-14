@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rickandmorty/feature/comics/view/character_view.dart';
+import 'package:rickandmorty/feature/tab/tabbar_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      theme: ThemeData.light(),
-      home: const CharacterView(),
+      theme: ThemeData.dark(),
+      home: const TabbarView(),
     );
   }
 }

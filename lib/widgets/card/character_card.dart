@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rickandmorty/core/extension/context_extension.dart';
 import 'package:rickandmorty/core/extension/string_extension.dart';
-import 'package:rickandmorty/feature/comics/models/character/character_model.dart';
+import 'package:rickandmorty/feature/character/models/character/character_model.dart';
 
 class CharacterCardWidget extends StatelessWidget {
   final Character? character;

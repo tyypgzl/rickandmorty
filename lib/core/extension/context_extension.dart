@@ -1,8 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
+}
+
+extension ValueExtension on BuildContext {
+  double get lowValue => 4;
+  double get mediumValue => 8;
+  double get highValue => 16;
 }
 
 extension MediaQueryExtension on BuildContext {
@@ -15,13 +21,25 @@ extension MediaQueryExtension on BuildContext {
 }
 
 extension PaddingExtensionAll on BuildContext {
-  EdgeInsets get paddingLow => const EdgeInsets.all(4);
-  EdgeInsets get paddingMedium => const EdgeInsets.all(8);
-  EdgeInsets get paddingHigh => const EdgeInsets.all(16);
+  EdgeInsets get paddingLow => EdgeInsets.all(lowValue);
+  EdgeInsets get paddingMedium => EdgeInsets.all(mediumValue);
+  EdgeInsets get paddingHigh => EdgeInsets.all(highValue);
+}
+
+extension MarginExtensionAll on BuildContext {
+  EdgeInsets get marginLow => EdgeInsets.all(lowValue);
+  EdgeInsets get marginMedium => EdgeInsets.all(mediumValue);
+  EdgeInsets get marginHigh => EdgeInsets.all(highValue);
+}
+
+extension RadiusExtension on BuildContext {
+  Radius get radiusCircularLow => Radius.circular(lowValue);
+  Radius get radiusCircularMedium => Radius.circular(mediumValue);
+  Radius get radiusCircularHigh => Radius.circular(highValue);
 }
 
 extension BorderRadiusExtension on BuildContext {
-  BorderRadius get borderRadiusAllLow => const BorderRadius.all(Radius.circular(4));
-  BorderRadius get borderRadiusAllMedium => const BorderRadius.all(Radius.circular(12));
-  BorderRadius get borderRadiusAllHigh => const BorderRadius.all(Radius.circular(24));
+  BorderRadius get borderRadiusAllLow => BorderRadius.all(radiusCircularLow);
+  BorderRadius get borderRadiusAllMedium => BorderRadius.all(radiusCircularMedium);
+  BorderRadius get borderRadiusAllHigh => BorderRadius.all(radiusCircularHigh);
 }

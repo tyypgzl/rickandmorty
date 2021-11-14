@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:rickandmorty/feature/comics/models/character/character_model.dart';
-import 'package:rickandmorty/feature/comics/models/info/info_model.dart';
+import 'package:rickandmorty/feature/character/models/info/info_model.dart';
+
+import 'character_model.dart';
 
 part 'all_character_model.g.dart';
 

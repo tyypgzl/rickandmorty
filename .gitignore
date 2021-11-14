@@ -10,8 +10,9 @@
 .svn/
 
 
+
 # IntelliJ related
-*.g.dart
+
 *.iml
 *.ipr
 *.iws
@@ -32,6 +33,7 @@
 .pub-cache/
 .pub/
 /build/
+*.g.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -46,3 +48,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+
+will_be_added.txt
